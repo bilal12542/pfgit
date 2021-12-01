@@ -91,12 +91,12 @@ class Index(TemplateView):
             value = df_wl[df_wl['Date'] == str(dat.date())]
             for i in range(0, len(value) - 1):
                 PA = ((value.close.iloc[i] - value.close.iloc[i + 1]) / value.close.iloc[i + 1]) * 100
-                if PA >= 5:
+                if PA >= 3:
                     if btc_year >= 0:
                         amount = (100 / value.close.iloc[i])
                         btc_year -= amount
                         cash_year += 100
-                elif PA <= -5:
+                elif PA <= -3:
                     if cash_year >= 100:
                         cash_year -= 100
                         btc_year += (1 / value.close.iloc[i]) * 100
